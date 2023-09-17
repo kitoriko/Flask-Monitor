@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>K8s Clusters Uptime</title>
+</head>
+<body>
+    <h1>K8s Clusters Uptime</h1>
+    <ul>
+        {% for node in node_info %}
+            <li>{{ node.name }}: {{ node.uptime }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
