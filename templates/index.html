@@ -7,7 +7,7 @@
     <h1>K8s Clusters Uptime</h1>
     <ul>
         {% for node in node_info %}
-            <li>{{ node.name }}: {{ node.days_passed }} days (Created on: {{ node.creation_time }})</li>
+            <li>{{ node.name }}: Alive {{ node.days_passed }} days (Created on: {{ node.creation_time }})</li>
         {% endfor %}
     </ul>
 </body>

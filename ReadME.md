@@ -23,30 +23,21 @@ To run the Flask application locally without Docker, you'll need to follow these
             ```
 
 2. **Install Dependencies**
-    - Create a `requirements.txt` file and add the following:
-        ```
-        Flask==2.0.1
-        kubernetes==18.20.0
-        ```
     - Run the following command to install the dependencies:
         ```bash
         pip install -r requirements.txt
         ```
 
-3. **Set Up Your Flask Application**
-    - Create a file named `app.py` and paste the Flask code that I provided earlier.
-    - Create a folder named `templates` and inside it, create a file named `index.html`. Paste the HTML code that I provided earlier into this file.
-
-4. **Provide Kubernetes Configuration**
+3. **Provide Kubernetes Configuration**
     - Make sure you have a valid `kubeconfig` file. By default, the Kubernetes client will look for this file in your home directory under `.kube/config`.
 
-5. **Run the Application**
+4. **Run the Application**
     ```bash
     python app.py
     ```
     This will start the Flask development server, and the application should be accessible at `http://127.0.0.1:5000/`.
 
-6. **Check Logs**
+5. **Check Logs**
     - The application logs will be saved in a file named `app.log` in the same directory as your `app.py`.
 
 ### Note
