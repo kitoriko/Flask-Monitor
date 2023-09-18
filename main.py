@@ -1,10 +1,9 @@
 from flask import Flask, render_template
 from kubernetes import client, config
 import logging
+from datetime import datetime, timezone
 
 app = Flask(__name__)
-
-# Настройка логирования
 logging.basicConfig(filename='app.log', level=logging.DEBUG)
 
 @app.route('/')
@@ -14,18 +13,15 @@ def index():
         config.load_config()
 
         v1 = client.CoreV1Api()
-
-        # Получение информации о нодах
         nodes = v1.list_node().items
-
         node_info = []
         for node in nodes:
-            uptime = node.metadata.creation_timestamp
+            creation_time = node.metadata.creation_timestamp
+            current_time = datetime.now(timezone.utc)
+            days_passed = (current_time - creation_time).days
             name = node.metadata.name
-            node_info.append({'name': name, 'uptime': uptime})
-
+            node_info.append({'name': name, 'days_passed': days_passed, 'creation_time': creation_time})
         return render_template('index.html', node_info=node_info)
-
     except Exception as e:
         logging.error(f"Ошибка: {e}")
         return f"Ошибка: {e}", 500
