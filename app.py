@@ -22,9 +22,9 @@ def index():
             name = node.metadata.name
             node_info.append({'name': name, 'days_passed': days_passed, 'creation_time': creation_time})
         return render_template('index.html', node_info=node_info)
-    except Exception as e:
-        logging.error(f"Ошибка: {e}")
-        return f"Ошибка: {e}", 500
+    except Exception as err:
+        logging.error(f"ERROR: {err}")
+        return f"ERROR: {err}", 500
 
 if __name__ == '__main__':
     app.run(debug=True)
